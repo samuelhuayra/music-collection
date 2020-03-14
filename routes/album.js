@@ -28,26 +28,6 @@ const validations = require('../commons/validations')
  *                year:
  *                  type: Number
  *                  example: 1995
- *                artists:
- *                  type: array
- *                  items:
- *                    type: object
- *                    properties:
- *                      _id:
- *                        type: String
- *                        example: 5e6d339aa85e7d0c6cc030b9
- *                      firstName:
- *                        type: String
- *                        example: Samuel
- *                      lastName:
- *                        type: String
- *                        example: Huayra
- *                      birthDate:
- *                        type: Date
- *                        example: 1995-11-05T15:54:49.119Z
- *                    required:
- *                      - _id
- *                      - firstName
  *              required:
  *                - releaseDate
  *                - title
@@ -131,7 +111,7 @@ router.get('/getAlbum/:_id', async (req, res, next) => {
  * path:
  *  /album/editAlbum/{_id}:
  *    put:
- *      summary: Edit an exist album
+ *      summary: Edit an exist album by _id
  *      tags: [Album]
  *      parameters:
  *        - in: path
@@ -160,33 +140,13 @@ router.get('/getAlbum/:_id', async (req, res, next) => {
  *                year:
  *                  type: Number
  *                  example: 1995
- *                artists:
- *                  type: array
- *                  items:
- *                    type: object
- *                    properties:
- *                      _id:
- *                        type: String
- *                        example: 5e6d339aa85e7d0c6cc030b9
- *                      firstName:
- *                        type: String
- *                        example: Samuel
- *                      lastName:
- *                        type: String
- *                        example: Huayra
- *                      birthDate:
- *                        type: Date
- *                        example: 1995-11-05T15:54:49.119Z
- *                    required:
- *                      - _id
- *                      - firstName
  *              required:
  *                - releaseDate
  *                - title
  *                - year
  *      responses:
  *        '200':
- *          description: Album created
+ *          description: Album edited
  *        '400':
  *          description: Some paramenter is blank
  */
