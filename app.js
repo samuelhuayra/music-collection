@@ -23,7 +23,7 @@ app.use(morgan('combined', { stream: fs.createWriteStream('app.log', { flags: 'a
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')))
 app.use('/docs', swaggerUi.serve)
-app.get('/docs', swaggerUi.setup(swaggerJsdoc(swaggerDocument), {}))
+app.get('/docs', swaggerUi.setup(swaggerJsdoc(swaggerDocument)))
 app.use('/artist', artist)
 app.use('/album', album)
 

@@ -12,7 +12,7 @@ const swaggerDocument = {
       }
     }
   },
-  apis: []
+  apis: ['./routes/*.js']
 }
 
 module.exports = swaggerDocument
