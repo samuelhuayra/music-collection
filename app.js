@@ -5,7 +5,13 @@ const fs = require('fs')
 const morgan = require('morgan')
 const createError = require('http-errors')
 const cors = require('cors')
+const swaggerUi = require('swagger-ui-express')
+const swaggerJsdoc = require('swagger-jsdoc')
+const swaggerDocument = require('./commons/swagger')
 const mongoose = require('mongoose')
+const artist = require('./routes/artist')
+const album = require('./routes/album')
+
 mongoose.connect(process.env.MONGODBCONECTION, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const app = express()
@@ -16,6 +22,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(morgan('combined', { stream: fs.createWriteStream('app.log', { flags: 'a' }) }))
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')))
+app.use('/docs', swaggerUi.serve)
+app.get('/docs', swaggerUi.setup(swaggerJsdoc(swaggerDocument), {}))
+app.use('/artist', artist)
+app.use('/album', album)
 
 app.use((req, res, next) => {
   next(createError(404))
