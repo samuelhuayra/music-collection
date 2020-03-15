@@ -31,7 +31,7 @@ app.use((req, res, next) => {
   next(createError(404))
 })
 app.use((err, req, res, next) => {
-  next(createError(400, err))
+  next(err)
 })
 
 module.exports = app

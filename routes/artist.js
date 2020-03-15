@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const ArtistModel = require('../models/artist.model')
+const AlbumModel = require('../models/album.model')
 const validations = require('../commons/validations')
 
 /**
@@ -82,7 +83,7 @@ router.get('/getArtists', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6d4ece9d86cf1c94422f33
+ *            example: 5e6e4f2de0475a219893ff56
  *          required: true
  *          description: Id of the artist
  *      responses:
@@ -96,7 +97,7 @@ router.get('/getArtist/:_id', async (req, res, next) => {
     validations.blank({
       _id: req.params._id
     })
-    const artist = await ArtistModel.findById(req.params._id).exec()
+    const artist = await ArtistModel.findOne({ _id: req.params._id }).exec()
     res.json(artist)
   } catch (e) {
     next(e)
@@ -115,7 +116,7 @@ router.get('/getArtist/:_id', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6d4ece9d86cf1c94422f33
+ *            example: 5e6e4f2de0475a219893ff56
  *          required: true
  *          description: Id of the artist
  *      requestBody:
@@ -151,7 +152,10 @@ router.put('/editArtist/:_id', async (req, res, next) => {
       lastName: req.body.lastName
     })
     await ArtistModel.findByIdAndUpdate(req.params._id, req.body).exec()
-    const artist = await ArtistModel.findById(req.params._id).exec()
+    const data = req.body
+    data._id = req.params._id
+    await AlbumModel.updateMany({ artists: { $elemMatch: { _id: req.params._id } } }, { $set: { 'artists.$': req.body } })
+    const artist = await ArtistModel.findOne({ _id: req.params._id }).exec()
     res.json(artist)
   } catch (e) {
     next(e)
@@ -170,7 +174,7 @@ router.put('/editArtist/:_id', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6d4ece9d86cf1c94422f33
+ *            example: 5e6e4f2de0475a219893ff56
  *          required: true
  *          description: Id of the artist
  *      responses:
@@ -185,6 +189,7 @@ router.delete('/deleteArtist/:_id', async (req, res, next) => {
       _id: req.params._id
     })
     var artist = await ArtistModel.deleteOne({ _id: req.params._id }).exec()
+    await AlbumModel.updateMany({}, { $pull: { artists: { _id: req.params._id } } })
     res.json(artist)
   } catch (e) {
     next(e)
