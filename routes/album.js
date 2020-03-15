@@ -86,7 +86,7 @@ router.get('/getAlbums', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6e4ef3e0475a219893ff55
+ *            example: 5e6e5187007de622acd845e7
  *          required: true
  *          description: Id of the album
  *      responses:
@@ -119,7 +119,7 @@ router.get('/getAlbum/:_id', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6e4ef3e0475a219893ff55
+ *            example: 5e6e5187007de622acd845e7
  *          required: true
  *          description: Id of the album
  *      requestBody:
@@ -179,7 +179,7 @@ router.put('/editAlbum/:_id', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6e4ef3e0475a219893ff55
+ *            example: 5e6e5187007de622acd845e7
  *          required: true
  *          description: Id of the album
  *      responses:
@@ -212,7 +212,7 @@ router.delete('/deleteAlbum/:_id', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6e4ef3e0475a219893ff55
+ *            example: 5e6e5187007de622acd845e7
  *          required: true
  *          description: Id of the album
  *      requestBody:
@@ -224,7 +224,7 @@ router.delete('/deleteAlbum/:_id', async (req, res, next) => {
  *              properties:
  *                _artistId:
  *                  type: String
- *                  example: 5e6e4f2de0475a219893ff56
+ *                  example: 5e6e519d007de622acd845e8
  *                firstName:
  *                  type: String
  *                  example: Samuel
@@ -279,7 +279,7 @@ router.put('/attachArtistToAlbum/:_id', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6e4ef3e0475a219893ff55
+ *            example: 5e6e5187007de622acd845e7
  *          required: true
  *          description: Id of the album
  *      requestBody:
@@ -291,7 +291,7 @@ router.put('/attachArtistToAlbum/:_id', async (req, res, next) => {
  *              properties:
  *                _artistId:
  *                  type: String
- *                  example: 5e6e4f2de0475a219893ff56
+ *                  example: 5e6e519d007de622acd845e8
  *              required:
  *                - _id
  *      responses:

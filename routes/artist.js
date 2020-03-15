@@ -83,7 +83,7 @@ router.get('/getArtists', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6e4f2de0475a219893ff56
+ *            example: 5e6e519d007de622acd845e8
  *          required: true
  *          description: Id of the artist
  *      responses:
@@ -116,7 +116,7 @@ router.get('/getArtist/:_id', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6e4f2de0475a219893ff56
+ *            example: 5e6e519d007de622acd845e8
  *          required: true
  *          description: Id of the artist
  *      requestBody:
@@ -174,7 +174,7 @@ router.put('/editArtist/:_id', async (req, res, next) => {
  *          name: _id
  *          schema:
  *            type: string
- *            example: 5e6e4f2de0475a219893ff56
+ *            example: 5e6e519d007de622acd845e8
  *          required: true
  *          description: Id of the artist
  *      responses:
