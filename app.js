@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const fs = require('fs')
@@ -12,7 +11,7 @@ const mongoose = require('mongoose')
 const artist = require('./routes/artist')
 const album = require('./routes/album')
 
-mongoose.connect(process.env.MONGODBCONECTION, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://samuel:Sam13792805@cluster0-leqzf.mongodb.net/musiccollection?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const app = express()
 app.use(cors())
